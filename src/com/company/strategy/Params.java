@@ -5,11 +5,11 @@ import com.company.structure.*;
 import java.util.Random;
 
 public class Params {
-    Student student;
-    Subject subject;
-    Group group;
-    Faculty faculty;
-    University university;
+    private Student student;
+    private Subject subject;
+    private Group group;
+    private Faculty getFaculty;
+    private University university;
 
     public Params(University university) {
         this.university = university;
@@ -28,7 +28,7 @@ public class Params {
     }
 
     public Faculty getFaculty() {
-        return faculty;
+        return getFaculty;
     }
 
     public University getUniversity() {
@@ -48,7 +48,7 @@ public class Params {
     }
 
     public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
+        this.getFaculty = faculty;
     }
 
     public void setUniversity(University university) {
@@ -75,13 +75,13 @@ public class Params {
     public void setRandomSubjectAndFaculty() {
         Random r = new Random();
         int i = r.nextInt(university.getNumberOfFaculties());
-        faculty = university.getFaculty(i);
-        int j = r.nextInt(faculty.getNumberOfGroups());
-        int k = r.nextInt(faculty.getGroup(j).getNumberOfSubjects());
-        subject = faculty.getGroup(j).getSubject(k);
+        getFaculty = university.getFaculty(i);
+        int j = r.nextInt(getFaculty.getNumberOfGroups());
+        int k = r.nextInt(getFaculty.getGroup(j).getNumberOfSubjects());
+        subject = getFaculty.getGroup(j).getSubject(k);
     }
 
-    public void setRandomSubject(){
+    public void setRandomSubject() {
         Random r = new Random();
         int i = r.nextInt(university.getNumberOfFaculties());
         int j = r.nextInt(university.getFaculty(i).getNumberOfGroups());

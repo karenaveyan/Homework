@@ -1,6 +1,6 @@
 package com.company.structure;
 
-import com.company.exceptions.LogicException;
+import com.company.exceptions.AverageCalculationException;
 
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class Faculty {
         return name;
     }
 
-    public void setGroups() throws LogicException {
+    public void setGroups() throws AverageCalculationException {
         System.out.print("Enter the number of groups for " + name + " faculty: ");
         Scanner num = new Scanner(System.in);
         groups = new Group[num.nextInt()];
@@ -25,8 +25,8 @@ public class Faculty {
             Scanner name = new Scanner(System.in);
             groups[i] = new Group(name.nextLine());
         }
-        if(groups.length == 0) {
-            throw new LogicException("No groups");
+        if (groups.length == 0) {
+            throw new AverageCalculationException("No groups");
         }
         System.out.println();
     }
