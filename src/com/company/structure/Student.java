@@ -5,8 +5,8 @@ import com.company.exceptions.AverageCalculationException;
 import java.util.Scanner;
 
 public class Student {
-    String name;
-    Subject[] subjects;
+    private String name;
+    private Subject[] subjects;
     private double[] grades;
 
     public Student(String name, Subject[] subjects) {
