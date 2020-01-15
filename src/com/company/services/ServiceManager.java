@@ -1,14 +1,14 @@
 package com.company.services;
 
-import com.company.exceptions.LogicException;
-import com.company.strategy.GradeGettingStrategy;
+import com.company.exceptions.AverageCalculationException;
+import com.company.strategy.AverageCalculationStrategy;
 import com.company.strategy.Params;
 import com.company.structure.University;
 
 import java.util.Scanner;
 
 public class ServiceManager {
-    public static University create() throws LogicException {
+    public static University create() throws AverageCalculationException {
         System.out.print("Enter the name of a university: ");
         Scanner uName = new Scanner(System.in);
         University university = new University(uName.nextLine());
@@ -37,10 +37,11 @@ public class ServiceManager {
         }
         return university;
     }
-    public static double gradeGettingService(GradeGettingStrategy strategy, Params params) {
+
+    public static double AverageCalculationService(AverageCalculationStrategy strategy, Params params) {
         try {
-            return strategy.getAverageGrade(params);
-        }catch (LogicException e) {
+            return strategy.calculateAverage(params);
+        } catch (AverageCalculationException e) {
             System.out.println(e.getMessage());
             return -1;
         }

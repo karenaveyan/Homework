@@ -1,6 +1,6 @@
 package com.company.main;
 
-import com.company.exceptions.LogicException;
+import com.company.exceptions.AverageCalculationException;
 import com.company.services.ServiceManager;
 import com.company.strategy.*;
 import com.company.structure.University;
@@ -11,43 +11,43 @@ public class Main {
         University university;
         try {
             university = ServiceManager.create();
-        } catch (LogicException e) {
+        } catch (AverageCalculationException e) {
             System.out.println(e.getMessage());
             return;
         }
 
-        Params p = new Params(university);
+        Params params = new Params(university);
 
         // You can also set values manually with default setters
-        p.setRandomStudent();
-        GettingByStudent s1 = new GettingByStudent();
-        double d1 = ServiceManager.gradeGettingService(s1, p);
+        params.setRandomStudent();
+        AverageCalculationByStudent s1 = new AverageCalculationByStudent();
+        double d1 = ServiceManager.AverageCalculationService(s1, params);
         if (d1 != -1) {
-            System.out.print("The GPA of all subjects for " + p.getStudent().getName() + ": ");
+            System.out.print("The GPA of all subjects for " + params.getStudent().getName() + ": ");
             System.out.println(d1);
         }
 
-        p.setRandomSubjectAndGroup();
-        GettingBySubjectAndGroup s2 = new GettingBySubjectAndGroup();
-        double d2 = ServiceManager.gradeGettingService(s2, p);
+        params.setRandomSubjectAndGroup();
+        AverageCalculationBySubjectAndGroup s2 = new AverageCalculationBySubjectAndGroup();
+        double d2 = ServiceManager.AverageCalculationService(s2, params);
         if (d2 != -1) {
-            System.out.print("The GPA of " + p.getSubject().getName() + " in " + p.getGroup().getName() + ": ");
+            System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getGroup().getName() + ": ");
             System.out.println(d2);
         }
 
-        p.setRandomSubjectAndFaculty();
-        GettingBySubjectAndFaculty s3 = new GettingBySubjectAndFaculty();
-        double d3 = ServiceManager.gradeGettingService(s3, p);
+        params.setRandomSubjectAndFaculty();
+        AverageCalculationBySubjectAndFaculty s3 = new AverageCalculationBySubjectAndFaculty();
+        double d3 = ServiceManager.AverageCalculationService(s3, params);
         if (d3 != -1) {
-            System.out.print("The GPA of " + p.getSubject().getName() + " in " + p.getFaculty().getName() + ": ");
+            System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getFaculty().getName() + ": ");
             System.out.println(d3);
         }
 
-        p.setRandomSubject();
-        GettingBySubject s4 = new GettingBySubject();
-        double d4 = ServiceManager.gradeGettingService(s4, p);
+        params.setRandomSubject();
+        AverageCalculationBySubject s4 = new AverageCalculationBySubject();
+        double d4 = ServiceManager.AverageCalculationService(s4, params);
         if (d4 != -1) {
-            System.out.print("The GPA of " + p.getSubject().getName() + " in " + p.getUniversity().getName() + ": ");
+            System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getUniversity().getName() + ": ");
             System.out.println(d4);
         }
     }
