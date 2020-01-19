@@ -1,6 +1,7 @@
 package com.company.structure;
 
 import com.company.exceptions.AverageCalculationException;
+import com.company.exceptions.UniversityCreationException;
 
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class University {
         return name;
     }
 
-    public void setFaculties() throws AverageCalculationException {
+    public void setFaculties() {
         System.out.print("Enter the number of faculties for " + name + ": ");
         Scanner num = new Scanner(System.in);
         faculties = new Faculty[num.nextInt()];
@@ -26,7 +27,7 @@ public class University {
             faculties[i] = new Faculty(name.nextLine());
         }
         if (faculties.length == 0) {
-            throw new AverageCalculationException("No faculties");
+            throw new UniversityCreationException("No faculties");
         }
         System.out.println();
     }

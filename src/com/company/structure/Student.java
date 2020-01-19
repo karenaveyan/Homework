@@ -1,6 +1,7 @@
 package com.company.structure;
 
 import com.company.exceptions.AverageCalculationException;
+import com.company.exceptions.UniversityCreationException;
 
 import java.util.Scanner;
 
@@ -26,7 +27,7 @@ public class Student {
         return subjects.length;
     }
 
-    public void setSubjects() throws AverageCalculationException {
+    public void setSubjects() {
         System.out.print("Enter the number of subjects for " + name + " student: ");
         Scanner num = new Scanner(System.in);
         subjects = new Subject[num.nextInt()];
@@ -36,7 +37,7 @@ public class Student {
             subjects[i] = new Subject(name.nextLine());
         }
         if (subjects.length == 0) {
-            throw new AverageCalculationException("No subjects");
+            throw new UniversityCreationException("No subjects");
         }
         System.out.println();
     }
@@ -45,14 +46,14 @@ public class Student {
         return grades;
     }
 
-    public void setGrades() throws AverageCalculationException {
+    public void setGrades() {
         grades = new double[subjects.length];
         for (int i = 0; i < subjects.length; i++) {
             System.out.print("Enter the grade of " + subjects[i].name + " for " + name + ": ");
             Scanner grade = new Scanner(System.in);
             grades[i] = grade.nextDouble();
             if (grades[i] < 0 || grades[i] > 10) {
-                throw new AverageCalculationException("Invalid grade");
+                throw new UniversityCreationException("Invalid grade");
             }
         }
         System.out.println();

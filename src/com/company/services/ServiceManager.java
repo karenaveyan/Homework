@@ -8,6 +8,12 @@ import com.company.structure.University;
 import java.util.Scanner;
 
 public class ServiceManager {
+    private static double INVALID_GRADE = -1;
+
+    public static boolean isValidGrade(double grade) {
+        return grade != INVALID_GRADE;
+    }
+
     public static University create() throws AverageCalculationException {
         System.out.print("Enter the name of a university: ");
         Scanner uName = new Scanner(System.in);
@@ -45,7 +51,7 @@ public class ServiceManager {
             return strategy.calculateAverage(params);
         } catch (AverageCalculationException e) {
             System.out.println(e.getMessage());
-            return -1;
+            return INVALID_GRADE;
         }
     }
 }

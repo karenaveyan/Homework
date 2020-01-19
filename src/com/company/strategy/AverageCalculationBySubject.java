@@ -4,7 +4,7 @@ import com.company.exceptions.AverageCalculationException;
 
 public class AverageCalculationBySubject implements AverageCalculationStrategy {
     @Override
-    public double calculateAverage(Params params) throws AverageCalculationException {
+    public double calculateAverage(Params params) {
         double average = 0, n = 0;
         for (int i = 0; i < params.getUniversity().getNumberOfFaculties(); i++) {
             for (int j = 0; j < params.getUniversity().getFaculty(i).getNumberOfGroups(); j++) {
