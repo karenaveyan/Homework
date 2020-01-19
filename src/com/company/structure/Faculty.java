@@ -17,14 +17,10 @@ public class Faculty {
         return name;
     }
 
-    public void setGroups() {
-        System.out.print("Enter the number of groups for " + name + " faculty: ");
-        Scanner num = new Scanner(System.in);
-        groups = new Group[num.nextInt()];
+    public void setGroups(String[] names) {
+        groups = new Group[names.length];
         for (int i = 0; i < groups.length; i++) {
-            System.out.print("Enter the name of the group " + (i + 1) + ": ");
-            Scanner name = new Scanner(System.in);
-            groups[i] = new Group(name.nextLine());
+            groups[i] = new Group(names[i]);
         }
         if (groups.length == 0) {
             throw new UniversityCreationException("No groups");

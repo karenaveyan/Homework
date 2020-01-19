@@ -12,7 +12,6 @@ public class Student {
 
     public Student(String name) {
         this.name = name;
-        this.subjects = subjects;
     }
 
     public String getName() {
@@ -27,14 +26,10 @@ public class Student {
         return subjects.length;
     }
 
-    public void setSubjects() {
-        System.out.print("Enter the number of subjects for " + name + " student: ");
-        Scanner num = new Scanner(System.in);
-        subjects = new Subject[num.nextInt()];
+    public void setSubjects(String[] names) {
+        subjects = new Subject[names.length];
         for (int i = 0; i < subjects.length; i++) {
-            System.out.print("Enter the name of the subject " + (i + 1) + ": ");
-            Scanner name = new Scanner(System.in);
-            subjects[i] = new Subject(name.nextLine());
+            subjects[i] = new Subject(names[i]);
         }
         if (subjects.length == 0) {
             throw new UniversityCreationException("No subjects");
@@ -46,14 +41,12 @@ public class Student {
         return grades;
     }
 
-    public void setGrades() {
-        grades = new double[subjects.length];
-        for (int i = 0; i < subjects.length; i++) {
-            System.out.print("Enter the grade of " + subjects[i].name + " for " + name + ": ");
-            Scanner grade = new Scanner(System.in);
-            grades[i] = grade.nextDouble();
+    public void setGrades(double[] grades) {
+        this.grades = new double[grades.length];
+        for (int i = 0; i < grades.length; i++) {
+            this.grades[i] = grades[i];
             if (grades[i] < 0 || grades[i] > 10) {
-                throw new UniversityCreationException("Invalid grade");
+                throw new UniversityCreationException("Invalid grade for " + subjects[i].getName());
             }
         }
         System.out.println();

@@ -25,14 +25,10 @@ public class Group {
         return students.length;
     }
 
-    public void setStudents() {
-        System.out.print("Enter the number of students for " + name + " group: ");
-        Scanner num = new Scanner(System.in);
-        students = new Student[num.nextInt()];
+    public void setStudents(String[] names) {
+        students = new Student[names.length];
         for (int i = 0; i < students.length; i++) {
-            System.out.print("Enter the name of the student " + (i + 1) + ": ");
-            Scanner name = new Scanner(System.in);
-            students[i] = new Student(name.nextLine());
+            students[i] = new Student(names[i]);
         }
         if (students.length == 0) {
             throw new UniversityCreationException("No Students");

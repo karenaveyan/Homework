@@ -17,14 +17,10 @@ public class University {
         return name;
     }
 
-    public void setFaculties() {
-        System.out.print("Enter the number of faculties for " + name + ": ");
-        Scanner num = new Scanner(System.in);
-        faculties = new Faculty[num.nextInt()];
+    public void setFaculties(String[] names) {
+        faculties = new Faculty[names.length];
         for (int i = 0; i < faculties.length; i++) {
-            System.out.print("Enter the name of the faculty " + (i + 1) + ": ");
-            Scanner name = new Scanner(System.in);
-            faculties[i] = new Faculty(name.nextLine());
+            faculties[i] = new Faculty(names[i]);
         }
         if (faculties.length == 0) {
             throw new UniversityCreationException("No faculties");
