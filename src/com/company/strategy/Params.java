@@ -8,7 +8,7 @@ public class Params {
     private Student student;
     private Subject subject;
     private Group group;
-    private Faculty getFaculty;
+    private Faculty faculty;
     private University university;
 
     public Params(University university) {
@@ -28,7 +28,7 @@ public class Params {
     }
 
     public Faculty getFaculty() {
-        return getFaculty;
+        return faculty;
     }
 
     public University getUniversity() {
@@ -48,7 +48,7 @@ public class Params {
     }
 
     public void setFaculty(Faculty faculty) {
-        this.getFaculty = faculty;
+        this.faculty = faculty;
     }
 
     public void setUniversity(University university) {
@@ -68,24 +68,27 @@ public class Params {
         int i = r.nextInt(university.getNumberOfFaculties());
         int j = r.nextInt(university.getFaculty(i).getNumberOfGroups());
         group = university.getFaculty(i).getGroup(j);
-        int k = r.nextInt(group.getNumberOfSubjects());
-        subject = group.getSubject(k);
+        int k = r.nextInt(group.getNumberOfStudents());
+        int s = r.nextInt(group.getStudent(k).getNumberOfSubjects());
+        subject = group.getStudent(k).getSubject(s);
     }
 
     public void setRandomSubjectAndFaculty() {
         Random r = new Random();
         int i = r.nextInt(university.getNumberOfFaculties());
-        getFaculty = university.getFaculty(i);
-        int j = r.nextInt(getFaculty.getNumberOfGroups());
-        int k = r.nextInt(getFaculty.getGroup(j).getNumberOfSubjects());
-        subject = getFaculty.getGroup(j).getSubject(k);
+        faculty = university.getFaculty(i);
+        int j = r.nextInt(faculty.getNumberOfGroups());
+        int k = r.nextInt(faculty.getGroup(j).getNumberOfStudents());
+        int s = r.nextInt(faculty.getGroup(j).getStudent(k).getNumberOfSubjects());
+        subject = faculty.getGroup(j).getStudent(k).getSubject(s);
     }
 
     public void setRandomSubject() {
         Random r = new Random();
         int i = r.nextInt(university.getNumberOfFaculties());
         int j = r.nextInt(university.getFaculty(i).getNumberOfGroups());
-        int k = r.nextInt(university.getFaculty(i).getGroup(j).getNumberOfSubjects());
-        subject = university.getFaculty(i).getGroup(j).getSubject(k);
+        int k = r.nextInt(university.getFaculty(i).getGroup(j).getNumberOfStudents());
+        int s = r.nextInt(university.getFaculty(i).getGroup(j).getStudent(k).getNumberOfSubjects());
+        subject = university.getFaculty(i).getGroup(j).getStudent(k).getSubject(s);
     }
 }

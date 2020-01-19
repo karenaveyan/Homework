@@ -20,12 +20,14 @@ public class ServiceManager {
         }
         for (int i = 0; i < university.getNumberOfFaculties(); i++) {
             for (int j = 0; j < university.getFaculty(i).getNumberOfGroups(); j++) {
-                university.getFaculty(i).getGroup(j).setSubjects();
+                university.getFaculty(i).getGroup(j).setStudents();
             }
         }
         for (int i = 0; i < university.getNumberOfFaculties(); i++) {
             for (int j = 0; j < university.getFaculty(i).getNumberOfGroups(); j++) {
-                university.getFaculty(i).getGroup(j).setStudents();
+                for (int k = 0; k < university.getFaculty(i).getGroup(j).getNumberOfStudents(); k++) {
+                    university.getFaculty(i).getGroup(j).getStudent(k).setSubjects();
+                }
             }
         }
         for (int i = 0; i < university.getNumberOfFaculties(); i++) {
