@@ -1,8 +1,7 @@
 package com.company.services;
 
 import com.company.exceptions.AverageCalculationException;
-import com.company.strategy.AverageCalculationStrategy;
-import com.company.strategy.Params;
+import com.company.strategy.*;
 import com.company.structure.*;
 
 import java.util.Scanner;
@@ -83,7 +82,26 @@ public class ServiceManager {
         return university;
     }
 
-    public static double AverageCalculationService(AverageCalculationStrategy strategy, Params params) {
+    public static void printAverageGrade(AverageCalculationStrategy strategy, Params params) {
+        double grade = ServiceManager.getAverageGrade(strategy, params);
+        if (ServiceManager.isValidGrade(grade)) {
+            if (strategy instanceof AverageCalculationByStudent) {
+                System.out.print("The GPA of all subjects for " + params.getStudent().getName() + ": ");
+            }
+            if (strategy instanceof AverageCalculationBySubjectAndGroup) {
+                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getGroup().getName() + ": ");
+            }
+            if (strategy instanceof AverageCalculationBySubjectAndFaculty) {
+                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getGroup().getName() + ": ");
+            }
+            if (strategy instanceof AverageCalculationBySubject) {
+                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getUniversity().getName() + ": ");
+            }
+            System.out.println(grade);
+        }
+    }
+
+    private static double getAverageGrade(AverageCalculationStrategy strategy, Params params) {
         try {
             return strategy.calculateAverage(params);
         } catch (AverageCalculationException e) {

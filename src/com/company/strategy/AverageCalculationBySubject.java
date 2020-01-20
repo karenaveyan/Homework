@@ -25,7 +25,8 @@ public class AverageCalculationBySubject implements AverageCalculationStrategy {
             }
         }
         if (n == 0) {
-            throw new AverageCalculationException("In " + params.getUniversity() + " doesn't study " + params.getSubject().getName() + "!");
+            String message = "In " + params.getUniversity().getName() + " don't study " + params.getSubject().getName() + "!";
+            throw new AverageCalculationException(message);
         }
         return average / n;
     }

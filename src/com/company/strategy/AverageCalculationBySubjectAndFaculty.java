@@ -21,7 +21,8 @@ public class AverageCalculationBySubjectAndFaculty implements AverageCalculation
             }
         }
         if (n == 0) {
-            throw new AverageCalculationException("In " + params.getFaculty() + " doesn't study " + params.getSubject().getName() + "!");
+            String message = "In " + params.getFaculty().getName() + " don't study " + params.getSubject().getName() + "!";
+            throw new AverageCalculationException(message);
         }
         return average / n;
     }
