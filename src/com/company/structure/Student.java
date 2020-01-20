@@ -25,8 +25,8 @@ public class Student {
 
     public void setSubjects(String[] names) {
         subjects = new Subject[names.length];
-        for (int i = 0; i < subjects.length; i++) {
-            subjects[i] = new Subject(names[i]);
+        for (int iSubject = 0; iSubject < subjects.length; iSubject++) {
+            subjects[iSubject] = new Subject(names[iSubject]);
         }
         if (subjects.length == 0) {
             throw new UniversityCreationException("No subjects");

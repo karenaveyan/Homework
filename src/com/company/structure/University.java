@@ -16,8 +16,8 @@ public class University {
 
     public void setFaculties(String[] names) {
         faculties = new Faculty[names.length];
-        for (int i = 0; i < faculties.length; i++) {
-            faculties[i] = new Faculty(names[i]);
+        for (int iFaculty = 0; iFaculty < faculties.length; iFaculty++) {
+            faculties[iFaculty] = new Faculty(names[iFaculty]);
         }
         if (faculties.length == 0) {
             throw new UniversityCreationException("No faculties");

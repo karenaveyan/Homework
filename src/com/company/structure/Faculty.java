@@ -16,8 +16,8 @@ public class Faculty {
 
     public void setGroups(String[] names) {
         groups = new Group[names.length];
-        for (int i = 0; i < groups.length; i++) {
-            groups[i] = new Group(names[i]);
+        for (int iGroup = 0; iGroup < groups.length; iGroup++) {
+            groups[iGroup] = new Group(names[iGroup]);
         }
         if (groups.length == 0) {
             throw new UniversityCreationException("No groups");

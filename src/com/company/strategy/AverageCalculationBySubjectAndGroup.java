@@ -7,11 +7,11 @@ public class AverageCalculationBySubjectAndGroup implements AverageCalculationSt
     @Override
     public double calculateAverage(Params params) {
         double average = 0, n = 0;
-        for (int i = 0; i < params.getGroup().getNumberOfStudents(); i++) {
-            Student currentStudent = params.getGroup().getStudent(i);
-            for (int j = 0; j < currentStudent.getNumberOfSubjects(); j++) {
-                if (currentStudent.getSubject(j).getName().equals(params.getSubject().getName())) {
-                    average += currentStudent.getGrades()[j];
+        for (int iStudent = 0; iStudent < params.getGroup().getNumberOfStudents(); iStudent++) {
+            Student currentStudent = params.getGroup().getStudent(iStudent);
+            for (int iSubject = 0; iSubject < currentStudent.getNumberOfSubjects(); iSubject++) {
+                if (currentStudent.getSubject(iSubject).getName().equals(params.getSubject().getName())) {
+                    average += currentStudent.getGrades()[iSubject];
                     n++;
                     break;
                 }

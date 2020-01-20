@@ -24,8 +24,8 @@ public class Group {
 
     public void setStudents(String[] names) {
         students = new Student[names.length];
-        for (int i = 0; i < students.length; i++) {
-            students[i] = new Student(names[i]);
+        for (int iStudent = 0; iStudent < students.length; iStudent++) {
+            students[iStudent] = new Student(names[iStudent]);
         }
         if (students.length == 0) {
             throw new UniversityCreationException("No Students");
