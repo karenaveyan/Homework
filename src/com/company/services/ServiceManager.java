@@ -4,8 +4,6 @@ import com.company.exceptions.AverageCalculationException;
 import com.company.strategy.*;
 import com.company.structure.*;
 
-import java.util.Scanner;
-
 public class ServiceManager {
     private static double INVALID_GRADE = -1;
 
@@ -14,71 +12,85 @@ public class ServiceManager {
     }
 
     public static University create() throws AverageCalculationException {
-        System.out.print("Enter the name of a university: ");
-        Scanner uName = new Scanner(System.in);
-        University university = new University(uName.nextLine());
-        System.out.println();
+        String[] names;
+        double[] grades;
 
-        {
-            System.out.print("Enter the number of faculties for " + university.getName() + ": ");
-            Scanner num = new Scanner(System.in);
-            String[] names = new String[num.nextInt()];
-            for (int i = 0; i < names.length; i++) {
-                System.out.print("Enter the name of the faculty " + (i + 1) + ": ");
-                Scanner name = new Scanner(System.in);
-                names[i] = name.nextLine();
-            }
-            university.setFaculties(names);
-        }
-        for (int i = 0; i < university.getNumberOfFaculties(); i++) {
-            Faculty currentFaculty = university.getFaculty(i);
-            System.out.print("Enter the number of groups for " + currentFaculty.getName() + " faculty: ");
-            Scanner num = new Scanner(System.in);
-            String[] names = new String[num.nextInt()];
-            for (int j = 0; j < names.length; j++) {
-                System.out.print("Enter the name of the group " + (j + 1) + ": ");
-                Scanner name = new Scanner(System.in);
-                names[j] = name.nextLine();
-            }
-            currentFaculty.setGroups(names);
-        }
-        for (int i = 0; i < university.getNumberOfFaculties(); i++) {
-            for (int j = 0; j < university.getFaculty(i).getNumberOfGroups(); j++) {
-                Group currentGroup = university.getFaculty(i).getGroup(j);
-                System.out.print("Enter the number of students for " + currentGroup.getName() + " group: ");
-                Scanner num = new Scanner(System.in);
-                String[] names = new String[num.nextInt()];
-                for (int k = 0; k < names.length; k++) {
-                    System.out.print("Enter the name of the student " + (k + 1) + ": ");
-                    Scanner name = new Scanner(System.in);
-                    names[k] = name.nextLine();
-                }
-                currentGroup.setStudents(names);
-            }
-        }
-        for (int i = 0; i < university.getNumberOfFaculties(); i++) {
-            for (int j = 0; j < university.getFaculty(i).getNumberOfGroups(); j++) {
-                for (int k = 0; k < university.getFaculty(i).getGroup(j).getNumberOfStudents(); k++) {
-                    Student currentStudent = university.getFaculty(i).getGroup(j).getStudent(k);
-                    System.out.print("Enter the number of subjects for " + currentStudent.getName() + ": ");
-                    Scanner num = new Scanner(System.in);
-                    String[] names = new String[num.nextInt()];
-                    for (int s = 0; s < names.length; s++) {
-                        System.out.print("Enter the name of the subject " + (s + 1) + ": ");
-                        Scanner name = new Scanner(System.in);
-                        names[s] = name.nextLine();
-                    }
-                    currentStudent.setSubjects(names);
-                    double[] grades = new double[names.length];
-                    for (int s = 0; s < grades.length; s++) {
-                        System.out.print("Enter the grade of " + names[s] + " for " + currentStudent.getName() + ": ");
-                        Scanner grade = new Scanner(System.in);
-                        grades[s] = grade.nextDouble();
-                    }
-                    currentStudent.setGrades(grades);
-                }
-            }
-        }
+        //Creating university
+        University university = new University("Yerevan State University");
+
+        //Initializing faculties
+        names = new String[1];
+        names[0] = "Applied Mathematics and Informatics";
+        university.setFaculties(names);
+
+        //Initializing groups
+        Faculty currentFaculty = university.getFaculty(0);
+        names = new String[2];
+        names[0] = "418";
+        names[1] = "439";
+        currentFaculty.setGroups(names);
+
+        //Initializing students
+        Group currentGroup = university.getFaculty(0).getGroup(0);
+        names = new String[2];
+        names[0] = "Armen";
+        names[1] = "Artak";
+        currentGroup.setStudents(names);
+
+        currentGroup = university.getFaculty(0).getGroup(1);
+        names = new String[3];
+        names[0] = "Armine";
+        names[1] = "Gevorg";
+        names[2] = "Anna";
+        currentGroup.setStudents(names);
+
+        //Initializing subjects and grades
+        Student currentStudent = university.getFaculty(0).getGroup(0).getStudent(0);
+        names = new String[2];
+        grades = new double[2];
+        names[0] = "Math";
+        grades[0] = 9.5;
+        names[1] = "English";
+        grades[1] = 7.5;
+        currentStudent.setSubjects(names);
+        currentStudent.setGrades(grades);
+
+        currentStudent = university.getFaculty(0).getGroup(0).getStudent(1);
+        names = new String[1];
+        grades = new double[1];
+        names[0] = "Math";
+        grades[0] = 8.5;
+        currentStudent.setSubjects(names);
+        currentStudent.setGrades(grades);
+
+        currentStudent = university.getFaculty(0).getGroup(1).getStudent(0);
+        names = new String[2];
+        grades = new double[2];
+        names[0] = "English";
+        grades[0] = 9;
+        names[1] = "Physics";
+        grades[1] = 6.5;
+        currentStudent.setSubjects(names);
+        currentStudent.setGrades(grades);
+
+        currentStudent = university.getFaculty(0).getGroup(1).getStudent(1);
+        names = new String[1];
+        grades = new double[1];
+        names[0] = "Physics";
+        grades[0] = 8;
+        currentStudent.setSubjects(names);
+        currentStudent.setGrades(grades);
+
+        currentStudent = university.getFaculty(0).getGroup(1).getStudent(2);
+        names = new String[2];
+        grades = new double[2];
+        names[0] = "Math";
+        grades[0] = 7.5;
+        names[1] = "Physics";
+        grades[1] = 6.5;
+        currentStudent.setSubjects(names);
+        currentStudent.setGrades(grades);
+
         return university;
     }
 
@@ -89,10 +101,10 @@ public class ServiceManager {
                 System.out.print("The GPA of all subjects for " + params.getStudent().getName() + ": ");
             }
             if (strategy instanceof AverageCalculationBySubjectAndGroup) {
-                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getGroup().getName() + ": ");
+                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getGroup().getName() + " group: ");
             }
             if (strategy instanceof AverageCalculationBySubjectAndFaculty) {
-                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getGroup().getName() + ": ");
+                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getFaculty().getName() + " faculty: ");
             }
             if (strategy instanceof AverageCalculationBySubject) {
                 System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getUniversity().getName() + ": ");

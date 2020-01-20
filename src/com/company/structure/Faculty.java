@@ -22,7 +22,6 @@ public class Faculty {
         if (groups.length == 0) {
             throw new UniversityCreationException("No groups");
         }
-        System.out.println();
     }
 
     public Group getGroup(int i) {

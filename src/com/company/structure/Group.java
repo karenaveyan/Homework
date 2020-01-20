@@ -30,6 +30,5 @@ public class Group {
         if (students.length == 0) {
             throw new UniversityCreationException("No Students");
         }
-        System.out.println();
     }
 }

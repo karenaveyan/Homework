@@ -31,7 +31,6 @@ public class Student {
         if (subjects.length == 0) {
             throw new UniversityCreationException("No subjects");
         }
-        System.out.println();
     }
 
     public double[] getGrades() {
@@ -46,6 +45,5 @@ public class Student {
                 throw new UniversityCreationException("Invalid grade for " + subjects[i].getName());
             }
         }
-        System.out.println();
     }
 }

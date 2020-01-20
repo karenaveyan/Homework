@@ -57,38 +57,38 @@ public class Params {
 
     public void setRandomStudent() {
         Random r = new Random();
-        int i = r.nextInt(university.getNumberOfFaculties());
-        int j = r.nextInt(university.getFaculty(i).getNumberOfGroups());
-        int k = r.nextInt(university.getFaculty(i).getGroup(j).getNumberOfStudents());
-        student = university.getFaculty(i).getGroup(j).getStudent(k);
+        int iFaculty = r.nextInt(university.getNumberOfFaculties());
+        int iGroup = r.nextInt(university.getFaculty(iFaculty).getNumberOfGroups());
+        int iStudent = r.nextInt(university.getFaculty(iFaculty).getGroup(iGroup).getNumberOfStudents());
+        student = university.getFaculty(iFaculty).getGroup(iGroup).getStudent(iStudent);
     }
 
     public void setRandomSubjectAndGroup() {
         Random r = new Random();
-        int i = r.nextInt(university.getNumberOfFaculties());
-        int j = r.nextInt(university.getFaculty(i).getNumberOfGroups());
-        group = university.getFaculty(i).getGroup(j);
-        int k = r.nextInt(group.getNumberOfStudents());
-        int s = r.nextInt(group.getStudent(k).getNumberOfSubjects());
-        subject = group.getStudent(k).getSubject(s);
+        int iFaculty = r.nextInt(university.getNumberOfFaculties());
+        int iGroup = r.nextInt(university.getFaculty(iFaculty).getNumberOfGroups());
+        group = university.getFaculty(iFaculty).getGroup(iGroup);
+        int iStudent = r.nextInt(group.getNumberOfStudents());
+        int iSubject = r.nextInt(group.getStudent(iStudent).getNumberOfSubjects());
+        subject = group.getStudent(iStudent).getSubject(iSubject);
     }
 
     public void setRandomSubjectAndFaculty() {
         Random r = new Random();
-        int i = r.nextInt(university.getNumberOfFaculties());
-        faculty = university.getFaculty(i);
-        int j = r.nextInt(faculty.getNumberOfGroups());
-        int k = r.nextInt(faculty.getGroup(j).getNumberOfStudents());
-        int s = r.nextInt(faculty.getGroup(j).getStudent(k).getNumberOfSubjects());
-        subject = faculty.getGroup(j).getStudent(k).getSubject(s);
+        int iFaculty = r.nextInt(university.getNumberOfFaculties());
+        faculty = university.getFaculty(iFaculty);
+        int iGroup = r.nextInt(faculty.getNumberOfGroups());
+        int iStudent = r.nextInt(faculty.getGroup(iGroup).getNumberOfStudents());
+        int iSubject = r.nextInt(faculty.getGroup(iGroup).getStudent(iStudent).getNumberOfSubjects());
+        subject = faculty.getGroup(iGroup).getStudent(iStudent).getSubject(iSubject);
     }
 
     public void setRandomSubject() {
         Random r = new Random();
-        int i = r.nextInt(university.getNumberOfFaculties());
-        int j = r.nextInt(university.getFaculty(i).getNumberOfGroups());
-        int k = r.nextInt(university.getFaculty(i).getGroup(j).getNumberOfStudents());
-        int s = r.nextInt(university.getFaculty(i).getGroup(j).getStudent(k).getNumberOfSubjects());
-        subject = university.getFaculty(i).getGroup(j).getStudent(k).getSubject(s);
+        int iFaculty = r.nextInt(university.getNumberOfFaculties());
+        int iGroup = r.nextInt(university.getFaculty(iFaculty).getNumberOfGroups());
+        int iStudent = r.nextInt(university.getFaculty(iFaculty).getGroup(iGroup).getNumberOfStudents());
+        int iSubject = r.nextInt(university.getFaculty(iFaculty).getGroup(iGroup).getStudent(iStudent).getNumberOfSubjects());
+        subject = university.getFaculty(iFaculty).getGroup(iGroup).getStudent(iStudent).getSubject(iSubject);
     }
 }

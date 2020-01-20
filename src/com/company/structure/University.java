@@ -22,7 +22,6 @@ public class University {
         if (faculties.length == 0) {
             throw new UniversityCreationException("No faculties");
         }
-        System.out.println();
     }
 
     public Faculty getFaculty(int i) {
