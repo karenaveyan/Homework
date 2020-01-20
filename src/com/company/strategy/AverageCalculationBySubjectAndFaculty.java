@@ -1,16 +1,19 @@
 package com.company.strategy;
 
 import com.company.exceptions.AverageCalculationException;
+import com.company.structure.*;
 
 public class AverageCalculationBySubjectAndFaculty implements AverageCalculationStrategy {
     @Override
     public double calculateAverage(Params params) {
         double average = 0, n = 0;
         for (int i = 0; i < params.getFaculty().getNumberOfGroups(); i++) {
-            for (int j = 0; j < params.getFaculty().getGroup(i).getNumberOfStudents(); j++) {
-                for (int k = 0; k < params.getFaculty().getGroup(i).getStudent(j).getNumberOfSubjects(); k++) {
-                    if (params.getFaculty().getGroup(i).getStudent(j).getSubject(k).getName().equals(params.getSubject().getName())) {
-                        average += params.getFaculty().getGroup(i).getStudent(j).getGrades()[k];
+            Group currentGroup = params.getFaculty().getGroup(i);
+            for (int j = 0; j < currentGroup.getNumberOfStudents(); j++) {
+                Student currentStudent = currentGroup.getStudent(j);
+                for (int k = 0; k < currentStudent.getNumberOfSubjects(); k++) {
+                    if (currentStudent.getSubject(k).getName().equals(params.getSubject().getName())) {
+                        average += currentStudent.getGrades()[k];
                         n++;
                         break;
                     }

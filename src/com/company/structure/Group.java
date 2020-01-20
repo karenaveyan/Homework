@@ -1,9 +1,6 @@
 package com.company.structure;
 
-import com.company.exceptions.AverageCalculationException;
 import com.company.exceptions.UniversityCreationException;
-
-import java.util.Scanner;
 
 public class Group {
     private String name;
