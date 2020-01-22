@@ -1,4 +1,4 @@
-package com.company.exceptions;
+package com.epam.homework1.exception;
 
 public class AverageCalculationException extends RuntimeException {
     public AverageCalculationException(String s) {

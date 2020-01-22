@@ -1,4 +1,4 @@
-package com.company.structure;
+package com.epam.homework1.structure;
 
 public class Subject {
     String name;

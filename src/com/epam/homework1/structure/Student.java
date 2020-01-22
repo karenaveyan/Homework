@@ -1,6 +1,6 @@
-package com.company.structure;
+package com.epam.homework1.structure;
 
-import com.company.exceptions.UniversityCreationException;
+import com.epam.homework1.exception.UniversityCreationException;
 
 public class Student {
     private String name;

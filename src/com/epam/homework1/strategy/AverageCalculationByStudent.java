@@ -1,4 +1,4 @@
-package com.company.strategy;
+package com.epam.homework1.strategy;
 
 public class AverageCalculationByStudent implements AverageCalculationStrategy {
 

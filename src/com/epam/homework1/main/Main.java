@@ -1,9 +1,9 @@
-package com.company.main;
+package com.epam.homework1.main;
 
-import com.company.exceptions.AverageCalculationException;
-import com.company.services.ServiceManager;
-import com.company.strategy.*;
-import com.company.structure.University;
+import com.epam.homework1.exception.AverageCalculationException;
+import com.epam.homework1.service.ServiceManager;
+import com.epam.homework1.strategy.*;
+import com.epam.homework1.structure.University;
 
 public class Main {
 

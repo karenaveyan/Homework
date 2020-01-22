@@ -1,15 +1,10 @@
-package com.company.services;
+package com.epam.homework1.service;
 
-import com.company.exceptions.AverageCalculationException;
-import com.company.strategy.*;
-import com.company.structure.*;
+import com.epam.homework1.exception.AverageCalculationException;
+import com.epam.homework1.strategy.*;
+import com.epam.homework1.structure.*;
 
 public class ServiceManager {
-    private static double INVALID_GRADE = -1;
-
-    public static boolean isValidGrade(double grade) {
-        return grade != INVALID_GRADE;
-    }
 
     public static University create() throws AverageCalculationException {
         String[] names;
@@ -95,30 +90,22 @@ public class ServiceManager {
     }
 
     public static void printAverageGrade(AverageCalculationStrategy strategy, Params params) {
-        double grade = ServiceManager.getAverageGrade(strategy, params);
-        if (ServiceManager.isValidGrade(grade)) {
-            if (strategy instanceof AverageCalculationByStudent) {
-                System.out.print("The GPA of all subjects for " + params.getStudent().getName() + ": ");
-            }
-            if (strategy instanceof AverageCalculationBySubjectAndGroup) {
-                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getGroup().getName() + " group: ");
-            }
-            if (strategy instanceof AverageCalculationBySubjectAndFaculty) {
-                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getFaculty().getName() + " faculty: ");
-            }
-            if (strategy instanceof AverageCalculationBySubject) {
-                System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getUniversity().getName() + ": ");
-            }
-            System.out.println(grade);
-        }
-    }
-
-    private static double getAverageGrade(AverageCalculationStrategy strategy, Params params) {
+        double grade;
         try {
-            return strategy.calculateAverage(params);
+            grade = strategy.calculateAverage(params);
         } catch (AverageCalculationException e) {
             System.out.println(e.getMessage());
-            return INVALID_GRADE;
+            return;
         }
+        if (strategy instanceof AverageCalculationByStudent) {
+            System.out.print("The GPA of all subjects for " + params.getStudent().getName() + ": ");
+        } else if (strategy instanceof AverageCalculationBySubjectAndGroup) {
+            System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getGroup().getName() + " group: ");
+        } else if (strategy instanceof AverageCalculationBySubjectAndFaculty) {
+            System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getFaculty().getName() + " faculty: ");
+        } else if (strategy instanceof AverageCalculationBySubject) {
+            System.out.print("The GPA of " + params.getSubject().getName() + " in " + params.getUniversity().getName() + ": ");
+        }
+        System.out.println(grade);
     }
 }

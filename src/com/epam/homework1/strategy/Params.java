@@ -1,6 +1,6 @@
-package com.company.strategy;
+package com.epam.homework1.strategy;
 
-import com.company.structure.*;
+import com.epam.homework1.structure.*;
 
 import java.util.Random;
 
