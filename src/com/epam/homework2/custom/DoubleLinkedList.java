@@ -2,7 +2,10 @@ package com.epam.homework2.custom;
 
 import com.epam.homework2.model.Student;
 
-public class DoubleLinkedList {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class DoubleLinkedList implements Iterable<Student> {
     private Node head;
     private Node tail;
     private int size;
@@ -12,10 +15,6 @@ public class DoubleLinkedList {
         size = 0;
     }
 
-    public Node getHead() {
-        return head;
-    }
-
     public void push(Student student) {
         if (head == null) {
             head = tail = new Node(student, null, null);
@@ -23,21 +22,19 @@ public class DoubleLinkedList {
             return;
         }
         Node temp = new Node(student, null, head);
-        head.setPrevious(temp);
+        head.previous = temp;
         head = temp;
         size++;
     }
 
     public Student pop() {
-        if (size == 0) {
-            return null;
-        }
-        Student temp = head.getStudent();
+        checkSize();
+        Student temp = head.student;
         if (head == tail) {
             head = tail = null;
         } else {
-            head = head.getNext();
-            head.setPrevious(null);
+            head = head.next;
+            head.previous = null;
         }
         size--;
         return temp;
@@ -49,21 +46,19 @@ public class DoubleLinkedList {
             return;
         }
         Node temp = new Node(student, tail, null);
-        tail.setNext(temp);
+        tail.next = temp;
         tail = temp;
         size++;
     }
 
     public Student removeLast() {
-        if (size == 0) {
-            return null;
-        }
-        Student temp = tail.getStudent();
+        checkSize();
+        Student temp = tail.student;
         if (head == tail) {
             head = tail = null;
         } else {
-            tail = tail.getPrevious();
-            tail.setNext(null);
+            tail = tail.previous;
+            tail.next = null;
         }
         size--;
         return temp;
@@ -71,5 +66,48 @@ public class DoubleLinkedList {
 
     public int size() {
         return size;
+    }
+
+    private void checkSize() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+    }
+
+    @Override
+    public Iterator<Student> iterator() {
+        return new customIterator(head);
+    }
+
+    private static class customIterator implements Iterator<Student> {
+        Node current;
+
+        public customIterator(Node current) {
+            this.current = current;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Student next() {
+            Student temp = current.student;
+            current = current.next;
+            return temp;
+        }
+    }
+
+    private static class Node {
+        private Student student;
+        private Node previous;
+        private Node next;
+
+        public Node(Student student, Node previous, Node next) {
+            this.student = student;
+            this.previous = previous;
+            this.next = next;
+        }
     }
 }

@@ -1,16 +1,14 @@
 package com.epam.homework2.model;
 
-import java.util.Calendar;
-
 public class Student implements Comparable<Student> {
     private String firstName;
     private String lastName;
-    private int year;
+    private int age;
 
-    public Student(String firstName, String lastName, int year) {
+    public Student(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.year = year;
+        this.age = age;
     }
 
     public String getFirstName() {
@@ -25,12 +23,8 @@ public class Student implements Comparable<Student> {
         return firstName + " " + lastName;
     }
 
-    public int getYear() {
-        return year;
-    }
-
     public int getAge() {
-        return Calendar.getInstance().get(Calendar.YEAR) - year;
+        return age;
     }
 
     @Override
