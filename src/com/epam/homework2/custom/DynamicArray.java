@@ -31,28 +31,17 @@ public class DynamicArray {
     }
 
     public boolean remove(Student student) {
-        boolean studentExist = false;
-        for (Student s : students) {
-            if (s == student) {
-                studentExist = true;
-                break;
+        for (int i = 0; i < size; i++) {
+            if (student.equals(students[i])) {
+                for (int j = i; j < size; j++){
+                    students[j] = students[j+1];
+                }
+                size--;
+                checkCapacity();
+                return true;
             }
         }
-        if (!studentExist) {
-            return false;
-        }
-        Student[] temp = new Student[size - 1];
-        for (int i = 0, j = 0; j < size; j++) {
-            if (students[i] == student && studentExist) {
-                studentExist = false;
-                continue;
-            }
-            temp[i++] = students[j];
-        }
-        students = temp;
-        size--;
-        checkCapacity();
-        return true;
+        return false;
     }
 
     private void checkCapacity() {
