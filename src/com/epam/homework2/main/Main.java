@@ -1,8 +1,7 @@
 package com.epam.homework2.main;
 
 import com.epam.homework2.comparator.*;
-import com.epam.homework2.custom.DoubleLinkedList;
-import com.epam.homework2.custom.DynamicArray;
+import com.epam.homework2.custom.*;
 import com.epam.homework2.model.Student;
 
 import java.util.ArrayList;

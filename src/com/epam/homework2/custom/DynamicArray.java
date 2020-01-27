@@ -33,10 +33,10 @@ public class DynamicArray {
     public boolean remove(Student student) {
         for (int i = 0; i < size; i++) {
             if (student.equals(students[i])) {
+                size--;
                 for (int j = i; j < size; j++) {
                     students[j] = students[j + 1];
                 }
-                size--;
                 checkCapacity();
                 return true;
             }
