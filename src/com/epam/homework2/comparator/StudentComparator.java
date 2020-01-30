@@ -4,7 +4,7 @@ import com.epam.homework2.model.Student;
 
 import java.util.Comparator;
 
-public class ByNameAndByAgeComparator implements Comparator<Student> {
+public class StudentComparator implements Comparator<Student> {
     @Override
     public int compare(Student s1, Student s2) {
         int firstNameCompare = s1.getFirstName().compareTo(s2.getFirstName());

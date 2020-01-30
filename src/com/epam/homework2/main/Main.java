@@ -24,7 +24,7 @@ public class Main {
         System.out.println();
 
         // 1.
-        ByNameAndByAgeComparator myComparator = new ByNameAndByAgeComparator();
+        StudentComparator myComparator = new StudentComparator();
         Collections.sort(students, myComparator);
         System.out.println("Sorted by first name in ascending order and by age in descending order.");
         for (Student s : students) {
