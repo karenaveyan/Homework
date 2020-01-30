@@ -4,7 +4,6 @@ import com.epam.homework3.model.*;
 import com.epam.homework3.service.ServiceManager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
