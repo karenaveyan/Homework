@@ -12,17 +12,13 @@ public class Main {
         ArrayList<Student> students = new ArrayList<>(6);
         ServiceManager.setStudents(students);
 
-        for (Map.Entry<Object, Integer> s : ServiceManager.getMap(students).entrySet()) {
+        for (Map.Entry<Student, Integer> s : ServiceManager.getMapOfStudents(students).entrySet()) {
             System.out.println("Key: " + s.getKey() + ", Value: " + s.getValue());
         }
 
         System.out.println();
 
-        ArrayList<Faculty> faculties = new ArrayList<>(students.size());
-        for (Student s : students) {
-            faculties.add(s.getFaculty());
-        }
-        for (Map.Entry<Object, Integer> s : ServiceManager.getMap(faculties).entrySet()) {
+        for (Map.Entry<Faculty, Integer> s : ServiceManager.getMapOfFaculties(students).entrySet()) {
             System.out.println("Key: " + s.getKey() + ", Value: " + s.getValue());
         }
     }

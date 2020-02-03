@@ -3,6 +3,7 @@ package com.epam.homework3.service;
 import com.epam.homework3.model.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class ServiceManager {
@@ -15,15 +16,27 @@ public class ServiceManager {
         students.add(new Student("Elen", "Mirzoyan", 12, "093333333", Faculty.ENGLISH));
     }
 
-    public static HashMap<Object, Integer> getMap(ArrayList objects) {
-        HashMap<Object, Integer> hObjects = new HashMap<>();
-        for (Object obj : objects) {
-            if (!hObjects.containsKey(obj)) {
-                hObjects.put(obj, 1);
+    public static HashMap<Student, Integer> getMapOfStudents(ArrayList<Student> students) {
+        HashMap<Student, Integer> hStudents = new HashMap<>();
+        for (Student student : students) {
+            if (!hStudents.containsKey(student)) {
+                hStudents.put(student, 1);
             } else {
-                hObjects.put(obj, hObjects.get(obj) + 1);
+                hStudents.put(student, hStudents.get(student) + 1);
             }
         }
-        return hObjects;
+        return hStudents;
+    }
+
+    public static HashMap<Faculty, Integer> getMapOfFaculties(ArrayList<Student> students) {
+        HashMap<Faculty, Integer> hFaculties = new HashMap<>();
+        ArrayList<Faculty> faculties = new ArrayList<>(Arrays.asList(Faculty.values()));
+        for (Faculty faculty : faculties) {
+            hFaculties.put(faculty, 0);
+        }
+        for (Student student : students) {
+            hFaculties.put(student.getFaculty(), hFaculties.get(student.getFaculty()) + 1);
+        }
+        return hFaculties;
     }
 }
