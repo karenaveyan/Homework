@@ -3,7 +3,6 @@ package com.epam.homework3.service;
 import com.epam.homework3.model.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class ServiceManager {
@@ -25,17 +24,19 @@ public class ServiceManager {
                 hStudents.put(student, hStudents.get(student) + 1);
             }
         }
+        hStudents.remove(null);
         return hStudents;
     }
 
     public static HashMap<Faculty, Integer> getMapOfFaculties(ArrayList<Student> students) {
         HashMap<Faculty, Integer> hFaculties = new HashMap<>();
-        ArrayList<Faculty> faculties = new ArrayList<>(Arrays.asList(Faculty.values()));
-        for (Faculty faculty : faculties) {
+        for (Faculty faculty : Faculty.values()) {
             hFaculties.put(faculty, 0);
         }
         for (Student student : students) {
-            hFaculties.put(student.getFaculty(), hFaculties.get(student.getFaculty()) + 1);
+            if (student != null) {
+                hFaculties.put(student.getFaculty(), hFaculties.get(student.getFaculty()) + 1);
+            }
         }
         return hFaculties;
     }
