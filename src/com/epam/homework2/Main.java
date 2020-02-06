@@ -1,4 +1,4 @@
-package com.epam.homework2.main;
+package com.epam.homework2;
 
 import com.epam.homework2.comparator.*;
 import com.epam.homework2.custom.*;

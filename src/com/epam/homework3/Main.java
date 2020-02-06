@@ -1,4 +1,4 @@
-package com.epam.homework3.main;
+package com.epam.homework3;
 
 import com.epam.homework3.model.*;
 import com.epam.homework3.service.ServiceManager;

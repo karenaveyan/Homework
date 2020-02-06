@@ -1,4 +1,4 @@
-package com.epam.homework1.main;
+package com.epam.homework1;
 
 import com.epam.homework1.exception.AverageCalculationException;
 import com.epam.homework1.service.ServiceManager;

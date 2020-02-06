@@ -1,4 +1,4 @@
-package com.epam.homework4.main;
+package com.epam.homework4;
 
 import com.epam.homework4.model.Month;
 
