@@ -3,6 +3,11 @@ package com.epam.homework5.custom;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * SortedSet keeps comparable objects in set in sorted order.
+ *
+ * @param <T>
+ */
 public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
     private Node head;
     private Node tail;
@@ -13,10 +18,20 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
         size = 0;
     }
 
+    /**
+     * The method returns the size of set.
+     *
+     * @return size
+     */
     public int getSize() {
         return size;
     }
 
+    /**
+     * The method adds the element in set.
+     *
+     * @param element
+     */
     public void add(T element) {
         if (head == null) {
             head = tail = new Node(element, null, null);
@@ -51,6 +66,11 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
         }
     }
 
+    /**
+     * The method removes an element if contains.
+     *
+     * @param element
+     */
     public void remove(T element) {
         Node current = head;
         while (current != null) {
@@ -75,6 +95,12 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
         throw new NoSuchElementException();
     }
 
+    /**
+     * The method returns true if set contains the element, false otherwise.
+     *
+     * @param element
+     * @return
+     */
     public boolean contains(T element) {
         Node current = head;
         while (current != null) {
@@ -91,6 +117,9 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
         return new SortedSet<T>.customIterator(head);
     }
 
+    /**
+     * Custom implementation of iterator for set.
+     */
     private class customIterator implements Iterator<T> {
         Node current;
 
@@ -111,6 +140,10 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
         }
     }
 
+    /**
+     * Node is used for keeping data in linked list.
+     * Node consists of an element, left node and right node.
+     */
     private class Node {
         private T element;
         private Node previous;
