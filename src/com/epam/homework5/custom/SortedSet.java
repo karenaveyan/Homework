@@ -1,5 +1,6 @@
 package com.epam.homework5.custom;
 
+import java.util.IllformedLocaleException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -31,20 +32,19 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
      * The method adds the element in set.
      *
      * @param element
+     * @return true if method succeeds, false otherwise.
      */
-    public void add(T element) {
-        if (element == null) {
-            return;
-        }
+    public boolean add(T element) {
+        checkElement(element);
         if (head == null) {
             head = tail = new Node(element, null, null);
             size++;
-            return;
+            return true;
         }
         Node current = head;
         while (current != null) {
             if (element.equals(current.element)) {
-                return;
+                return false;
             }
             if (element.compareTo(current.element) < 0) {
                 Node temp = new Node(element, current.previous, current);
@@ -56,28 +56,28 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
                     current.previous = temp;
                 }
                 size++;
-                return;
+                return true;
             }
             if (current == tail) {
                 Node temp = new Node(element, current, null);
                 current.next = temp;
                 tail = temp;
                 size++;
-                return;
+                return true;
             }
             current = current.next;
         }
+        return false;
     }
 
     /**
      * The method removes an element if contains.
      *
      * @param element
+     * @return true if method succeeds, false otherwise.
      */
-    public void remove(T element) {
-        if (element == null) {
-            return;
-        }
+    public boolean remove(T element) {
+        checkElement(element);
         Node current = head;
         while (current != null) {
             if (element.equals(current.element)) {
@@ -94,11 +94,23 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
                     current.next.previous = current.previous;
                 }
                 size--;
-                return;
+                return true;
             }
             current = current.next;
         }
-        throw new NoSuchElementException();
+        //throw new NoSuchElementException();
+        return false;
+    }
+
+    /**
+     * The method checks if element is null or not.
+     *
+     * @param element
+     */
+    private void checkElement(T element) {
+        if (element == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
