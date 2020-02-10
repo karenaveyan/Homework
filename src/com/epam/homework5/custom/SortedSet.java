@@ -1,8 +1,6 @@
 package com.epam.homework5.custom;
 
-import java.util.IllformedLocaleException;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * SortedSet keeps comparable objects in set in sorted order.
