@@ -5,8 +5,6 @@ import com.epam.homework5.model.Coffee;
 import com.epam.homework5.model.CoffeeType;
 import com.epam.homework5.model.Student;
 
-import java.util.Iterator;
-
 /**
  * This program uses custom implemented sorted set with examples.
  *
@@ -14,7 +12,6 @@ import java.util.Iterator;
  * @version 1.0
  * @since 07.02.2020
  */
-
 public class Main {
 
     public static void main(String[] args) {
@@ -36,6 +33,7 @@ public class Main {
         coffeeSet.add(new Coffee(CoffeeType.CAPPUCCINO, 550));
         coffeeSet.add(new Coffee(CoffeeType.ARABICA, 500));
         coffeeSet.add(new Coffee(CoffeeType.ESPRESSO, 500));
+
         coffeeSet.add(new Coffee(CoffeeType.LATTE, 600));
         coffeeSet.remove(new Coffee(CoffeeType.AMERICANO, 500));
 

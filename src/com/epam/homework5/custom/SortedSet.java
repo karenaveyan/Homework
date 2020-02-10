@@ -33,6 +33,9 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
      * @param element
      */
     public void add(T element) {
+        if (element == null) {
+            return;
+        }
         if (head == null) {
             head = tail = new Node(element, null, null);
             size++;
@@ -72,6 +75,9 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
      * @param element
      */
     public void remove(T element) {
+        if (element == null) {
+            return;
+        }
         Node current = head;
         while (current != null) {
             if (element.equals(current.element)) {
@@ -99,7 +105,7 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
      * The method returns true if set contains the element, false otherwise.
      *
      * @param element
-     * @return
+     * @return true if contains, false otherwise.
      */
     public boolean contains(T element) {
         Node current = head;
@@ -114,16 +120,16 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new SortedSet<T>.customIterator(head);
+        return new SortedSet<T>.CustomIterator(head);
     }
 
     /**
      * Custom implementation of iterator for set.
      */
-    private class customIterator implements Iterator<T> {
+    private class CustomIterator implements Iterator<T> {
         Node current;
 
-        public customIterator(Node head) {
+        public CustomIterator(Node head) {
             this.current = head;
         }
 
