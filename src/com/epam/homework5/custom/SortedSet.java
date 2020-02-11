@@ -96,7 +96,6 @@ public class SortedSet<T extends Comparable<T>> implements Iterable<T> {
             }
             current = current.next;
         }
-        //throw new NoSuchElementException();
         return false;
     }
 
